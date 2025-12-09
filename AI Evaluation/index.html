@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeFlow - Time Tracking Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <div class="logo-icon">
+          <div class="logo-inner"></div>
+        </div>
+        <h1 class="logo-text">TimeFlow</h1>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input type="text" placeholder="Search tasks..." class="search-input">
+        </div>
+
+        <button class="notification-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="notification-badge">3</span>
+        </button>
+
+        <div class="user-avatar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <button class="sidebar-item active" data-section="Dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Dashboard</span>
+      </button>
+
+      <button class="sidebar-item" data-section="Tasks" onclick="window.location.href='tasks.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span>Tasks</span>
+      </button>
+
+      <button class="sidebar-item" data-section="Calendar" onclick="window.location.href='calendar.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Calendar</span>
+      </button>
+
+      <button class="sidebar-item" data-section="Reports">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="20" x2="12" y2="10"></line>
+          <line x1="18" y1="20" x2="18" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="16"></line>
+        </svg>
+        <span>Reports</span>
+      </button>
+
+      <button class="sidebar-item" data-section="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+        </svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+
+    <div class="pro-tip">
+      <p class="tip-title">💡 Pro Tip</p>
+      <p class="tip-text">Use keyboard shortcuts to track time faster!</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="dashboard-header">
+      <div>
+        <h2 class="welcome-title">Welcome back! ✨</h2>
+        <p class="date-text">Tuesday, December 9, 2025</p>
+      </div>
+      <button class="timer-btn" id="timerBtn">
+        <div class="timer-glow"></div>
+        <div class="timer-content">
+          <svg class="timer-icon play-icon" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <svg class="timer-icon pause-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <div class="timer-text">
+            <span class="timer-label">Start Timer</span>
+            <span class="timer-time hidden">00:00:00</span>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card stat-card-purple">
+        <div class="stat-icon stat-icon-purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <p class="stat-label">Hours Today</p>
+        <div class="stat-value-row">
+          <h3 class="stat-value">5h 32m</h3>
+          <span class="stat-change">+12%</span>
+        </div>
+        <div class="stat-glow stat-glow-purple"></div>
+      </div>
+
+      <div class="stat-card stat-card-blue">
+        <div class="stat-icon stat-icon-blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+        <p class="stat-label">Tasks Completed</p>
+        <div class="stat-value-row">
+          <h3 class="stat-value">8/12</h3>
+          <span class="stat-change">67%</span>
+        </div>
+        <div class="stat-glow stat-glow-blue"></div>
+      </div>
+
+      <div class="stat-card stat-card-violet">
+        <div class="stat-icon stat-icon-violet">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        </div>
+        <p class="stat-label">Productivity</p>
+        <div class="stat-value-row">
+          <h3 class="stat-value">94%</h3>
+          <span class="stat-change">+8%</span>
+        </div>
+        <div class="stat-glow stat-glow-violet"></div>
+      </div>
+
+      <div class="stat-card stat-card-orange">
+        <div class="stat-icon stat-icon-orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <p class="stat-label">Focus Score</p>
+        <div class="stat-value-row">
+          <h3 class="stat-value">87</h3>
+          <span class="stat-change">+5</span>
+        </div>
+        <div class="stat-glow stat-glow-orange"></div>
+      </div>
+    </div>
+
+    <!-- Chart and Tasks -->
+    <div class="content-grid">
+      <div class="chart-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Weekly Hours</h3>
+            <p class="card-subtitle">Your time tracking this week</p>
+          </div>
+          <div class="total-badge">
+            <p>Total: <span class="total-value">40.5h</span></p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="weeklyChart" width="600" height="280"></canvas>
+        </div>
+      </div>
+
+      <div class="tasks-card">
+        <div class="card-header">
+          <h3 class="card-title">Active Tasks</h3>
+          <div class="task-count-badge">
+            <span>5</span>
+          </div>
+        </div>
+
+        <div class="tasks-list">
+          <div class="task-item">
+            <div class="task-checkbox">
+              <svg class="task-circle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            </div>
+            <div class="task-content">
+              <p class="task-title">Design landing page</p>
+              <div class="task-meta">
+                <div class="task-dot task-dot-purple"></div>
+                <span class="task-time">2h 15m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox">
+              <svg class="task-check" width="20" height="20" viewBox="0 0 24 24" fill="#4ade80" stroke="#4ade80" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <div class="task-content">
+              <p class="task-title task-completed">Client meeting</p>
+              <div class="task-meta">
+                <div class="task-dot task-dot-blue"></div>
+                <span class="task-time">1h 30m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox">
+              <svg class="task-circle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            </div>
+            <div class="task-content">
+              <p class="task-title">Code review</p>
+              <div class="task-meta">
+                <div class="task-dot task-dot-violet"></div>
+                <span class="task-time">45m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox">
+              <svg class="task-check" width="20" height="20" viewBox="0 0 24 24" fill="#4ade80" stroke="#4ade80" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <div class="task-content">
+              <p class="task-title task-completed">Update documentation</p>
+              <div class="task-meta">
+                <div class="task-dot task-dot-pink"></div>
+                <span class="task-time">1h 02m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox">
+              <svg class="task-circle" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            </div>
+            <div class="task-content">
+              <p class="task-title">Team standup</p>
+              <div class="task-meta">
+                <div class="task-dot task-dot-amber"></div>
+                <span class="task-time">30m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="add-task-btn">+ Add New Task</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
